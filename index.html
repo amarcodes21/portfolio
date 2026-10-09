@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amarendar Eppa - Developer Universe</title>
+    <meta name="description" content="Cinematic portfolio of Amarendar Eppa">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Helvetica+Neue:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div id="profile-selection" class="profile-selection-screen">
+        <h1 class="profile-title">Who's watching?</h1>
+        <div class="profiles-container">
+            <div class="profile-card" onclick="selectProfile('Recruiter')">
+                <div class="profile-avatar avatar-1"></div>
+                <span class="profile-name">Recruiter</span>
+            </div>
+            <div class="profile-card" onclick="selectProfile('Developer')">
+                <div class="profile-avatar avatar-2"></div>
+                <span class="profile-name">Developer</span>
+            </div>
+            <div class="profile-card" onclick="selectProfile('Guest')">
+                <div class="profile-avatar avatar-3"></div>
+                <span class="profile-name">Guest</span>
+            </div>
+        </div>
+    </div>
+    
+    <div id="portfolio-app" style="display: none;">
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-left">
+                <a href="#hero" class="logo">[AE]</a>
+                <ul class="nav-links">
+                    <li><a href="#projects">Originals</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#journey">Journey</a></li>
+                    <li><a href="#about">About</a></li>
+                </ul>
+            </div>
+            <div class="nav-actions">
+                <a href="#" id="nav-github" target="_blank" rel="noopener noreferrer" aria-label="Visit my GitHub profile"><i class="fab fa-github"></i></a>
+                <a href="#" id="nav-linkedin" target="_blank" rel="noopener noreferrer" aria-label="Visit my LinkedIn profile"><i class="fab fa-linkedin"></i></a>
+                <a href="#" id="nav-resume" target="_blank" rel="noopener noreferrer" aria-label="View Resume"><i class="fas fa-file-alt"></i></a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Cinematic Hero -->
+    <header class="hero" id="hero">
+        <div class="hero-bg" id="hero-bg"></div>
+        <div class="hero-vignette"></div>
+        <div class="hero-content reveal-stagger">
+            <div class="hero-logo-treatment">
+                <span class="series-badge"><span class="badge-n">N</span> ORIGINAL</span>
+            </div>
+            <h1 class="hero-title" id="hero-title">Amarendar Eppa</h1>
+            <div class="hero-metadata">
+                <span class="match-score">99% Match</span>
+                <span class="year" id="hero-year">2024</span>
+                <span class="rating">DEV</span>
+                <span class="duration" id="hero-duration">AI & Software Engineering</span>
+            </div>
+            <p class="hero-intro" id="hero-intro">Loading...</p>
+            
+            <div class="hero-buttons">
+                <button class="btn btn-primary" onclick="document.getElementById('projects').scrollIntoView({behavior: 'smooth'})">
+                    <i class="fas fa-play"></i> Explore
+                </button>
+                <button class="btn btn-secondary" onclick="document.getElementById('about').scrollIntoView({behavior: 'smooth'})">
+                    <i class="fas fa-info-circle"></i> More Info
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <section id="projects" class="chapter-projects">
+            <!-- Dynamically populated rows -->
+            <div id="carousel-wrapper"></div>
+        </section>
+
+        <!-- Education & Journey -->
+        <section id="journey" class="bonus-content alternate">
+            <div class="bonus-container reveal">
+                <h2 class="section-heading">Education & Journey</h2>
+                <div class="episodes-list" id="education-list">
+                    <!-- Populated via JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Achievements & Certifications -->
+        <section id="achievements" class="bonus-content">
+            <div class="bonus-container reveal">
+                <h2 class="section-heading">Achievements & Certifications</h2>
+                <div class="episodes-list" id="achievements-list">
+                    <!-- Populated via JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- About Me & Connect With Me -->
+        <section id="about" class="bonus-content alternate">
+            <div class="bonus-container reveal">
+                <h2 class="section-heading">About Me & Connect</h2>
+                <div class="creator-grid">
+                    <div class="creator-bio">
+                        <div class="creator-profile-pic-container">
+                            <img src="assets/images/profile.jpg" alt="Amarendar Eppa" class="creator-profile-pic" id="about-profile-pic">
+                        </div>
+                        <p class="lead-text" id="about-role"></p>
+                        <p id="about-text"></p>
+                        <br>
+                        <div class="connect-buttons">
+                            <a href="#" class="btn btn-secondary" id="contact-email"><i class="fas fa-envelope"></i> Email Me</a>
+                            <a href="#" class="btn btn-secondary" id="contact-github" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> GitHub</a>
+                            <a href="#" class="btn btn-secondary" id="contact-linkedin" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                        </div>
+                    </div>
+                    <div class="creator-stats" id="creator-stats">
+                        <!-- Stats injected via JS -->
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Cinematic Project Details Modal -->
+    <div class="project-modal" id="project-modal" aria-hidden="true" role="dialog" aria-modal="true">
+        <div class="modal-backdrop" id="modal-backdrop"></div>
+        <div class="modal-container">
+            <button class="modal-close" id="modal-close" aria-label="Close modal">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="modal-hero" id="modal-hero">
+                <div class="modal-hero-vignette"></div>
+                <div class="modal-hero-content">
+                    <div class="modal-logo-treatment">
+                        <span class="series-badge" id="modal-badge"><span class="badge-n">N</span> ORIGINAL</span>
+                    </div>
+                    <h2 class="modal-title" id="modal-title">Project Title</h2>
+                    <div class="modal-actions">
+                        <a href="#" id="modal-demo" class="btn btn-primary" target="_blank" rel="noopener noreferrer"><i class="fas fa-play"></i> Live Demo</a>
+                        <a href="#" id="modal-github" class="btn btn-secondary" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> View Source</a>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="modal-metadata-row">
+                    <span class="match-score">99% Match</span>
+                    <span class="year" id="modal-year">2024</span>
+                    <span class="rating" id="modal-category">Category</span>
+                </div>
+                <div class="modal-details-grid">
+                    <div class="modal-synopsis">
+                        <p id="modal-problem" class="synopsis-text">Project description goes here.</p>
+                    </div>
+                    <div class="modal-cast">
+                        <div class="cast-group">
+                            <span class="cast-label">Tech Stack:</span>
+                            <span class="cast-value" id="modal-tech-stack"></span>
+                        </div>
+                        <div class="cast-group" id="modal-features-group">
+                            <span class="cast-label">Key Features:</span>
+                            <ul class="cast-list" id="modal-features">
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Netflix-Inspired Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-social">
+                <a href="#" id="footer-github" aria-label="GitHub" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
+                <a href="#" id="footer-linkedin" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i></a>
+                <a href="#" id="footer-email" aria-label="Email"><i class="fas fa-envelope"></i></a>
+            </div>
+            <p>&copy; <span id="current-year">2024</span> <span id="footer-name">Amarendar Eppa</span>. All rights reserved.</p>
+        </div>
+    </footer>
+    </div>
+
+    <script src="js/portfolio-data.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
